@@ -8,10 +8,6 @@ interface ModalWindowProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/exp
 export default function ModalWindow({ username, setUsername, isOpen, setIsOpen }: ModalWindowProps) {
   function handleSignIn() {
     if (username.trim() !== "") {
@@ -26,7 +22,7 @@ export default function ModalWindow({ username, setUsername, isOpen, setIsOpen }
   return (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 backdrop-blur-sm">
       <div className="bg-[#1e1e1e] border border-gray-700 rounded-[15px] p-6 w-[400px] shadow-2xl">
-        <h2 className="text-white text-[28px] font-bold mb-4">Log in</h2>
+        <h2 className="text-white text-[28px] font-bold mb-4">Change of nickname</h2>
         
         <div className="mb-6">
           <label className="text-gray-400 text-sm mb-2 block">Username</label>
@@ -49,7 +45,7 @@ export default function ModalWindow({ username, setUsername, isOpen, setIsOpen }
           onClick={handleSignIn}
           className="w-full bg-blue-500 hover:bg-blue-600 disabled:bg-gray-600 disabled:cursor-not-allowed text-white py-3 px-4 rounded-[8px] font-semibold transition-colors duration-200"
         >
-          Sign in
+          Confirm
         </button>
       </div>
     </div>

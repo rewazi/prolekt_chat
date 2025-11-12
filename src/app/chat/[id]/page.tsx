@@ -1,9 +1,10 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import Modal_window from "../../windows/modal_window";
+import Modal_window from "../../windows/change_nickname_modal_window";
 import Sidebar from "../../components/sidebar";
 import Header from "../../components/header";
+import CreateChatModal from '../../windows/create_chat_modal_window';
 
 export default function ChatRoom() {
   const params = useParams();
@@ -16,11 +17,12 @@ export default function ChatRoom() {
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
   const [username, setUsername] = useState('');
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isModalOpenChat, setIsModalOpenChat] = useState<boolean>(false);
 
   useEffect(() => {
     const storedUsername = localStorage.getItem('username');
     if (!storedUsername) {
-      alert('Please enter your username');
+      alert('Пожалуйста, введите ваше имя пользователя');
       router.push('/');
       return;
     }
@@ -79,9 +81,14 @@ export default function ChatRoom() {
   return (
     <>
       <Modal_window username={username} setUsername={setUsername} isOpen={isModalOpen} setIsOpen={setIsModalOpen}/>
-
+      <CreateChatModal isOpen={isModalOpenChat} setIsOpen={setIsModalOpenChat}
+      />
       <div className="flex h-screen w-screen overflow-hidden">
-        <Sidebar />
+        <Sidebar 
+          setIsModalOpen={setIsModalOpen}
+          setIsModalOpenChat={setIsModalOpenChat} 
+        />
+
 
         <main className="flex flex-1 flex-col bg-[#121212] min-w-0">
           <Header username={username} setUsername={setUsername} setIsModalOpen={setIsModalOpen}/>
