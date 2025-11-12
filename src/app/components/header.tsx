@@ -59,11 +59,6 @@ export default function Header({ username, setIsModalOpen }: HeaderProps) {
           >
             Change nickname
           </button>
-          <button
-            className="block w-full text-left px-[10px] py-[10px] text-[18px] text-white hover:bg-[#3a3a3a]"
-          >
-            Change avatar
-          </button>
         </div>
       )}
     </div>
