@@ -41,7 +41,7 @@ export default function Header({ username, setIsModalOpen }: HeaderProps) {
         className="flex items-center px-[20px] hover:bg-[#464646] rounded-[25px] w-[300px] cursor-pointer"
         onClick={() => setMenuOpen(!menuOpen)}
       >
-        <img src="assets/user-profile-icon.png" className="rounded-full w-[50px] h-[50px]" alt="User avatar" />
+        <img src="../assets/user-profile-icon.png" className="rounded-full w-[50px] h-[50px]" alt="User avatar" />
         <span className="text-white text-[28px] pl-[10px]">{username}</span>
         <img
           src="/assets/chevron-icon.png"
