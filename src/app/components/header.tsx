@@ -1,12 +1,16 @@
 'use client';
 import { useState } from 'react';
+
 interface HeaderProps {
   username: string;
   setUsername: React.Dispatch<React.SetStateAction<string>>;
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  chats?: any[];
+  search?: string;
+  setSearch?: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export default function Header({ username, setIsModalOpen }: HeaderProps) {
+export default function Header({ username, setUsername, setIsModalOpen, chats = [], search = '', setSearch = () => {} }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
 
   const changeNickname = (): void => {
@@ -14,12 +18,21 @@ export default function Header({ username, setIsModalOpen }: HeaderProps) {
     setIsModalOpen(true);
   };
 
+  const q = (search || '').toLowerCase();
+  const filteredChats = (chats || []).filter((chat: any) => {
+    const name = (chat?.name || '').toLowerCase();
+    const creator = (chat?.creator_username || '').toLowerCase();
+    return name.includes(q) || creator.includes(q);
+  });
+
   return (
     <div className="flex justify-between h-[100px] px-[85px] py-[15px] bg-[#1E1E1E] relative">
       <div className="w-[400px] h-[70px] relative">
         <input
           type="text"
           placeholder="Search chats..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
           className="w-full h-full bg-[white] placeholder:text-[20px] text-gray-400 placeholder:text-gray-400 rounded-[25px] py-[15px] pl-[75px] focus:ring-[2px] focus:ring-blue-500 duration-500 ease-in-out focus:outline-none"
         />
         <svg
@@ -52,7 +65,6 @@ export default function Header({ username, setIsModalOpen }: HeaderProps) {
 
       {menuOpen && (
         <div className="absolute right-[85px] top-[100px] bg-[#2e2e2e] rounded-[25px] z-50 overflow-hidden shadow-lg">
-          
           <button
             className="block w-full text-left px-[10px] py-[10px] text-[18px] text-white hover:bg-[#3a3a3a]"
             onClick={changeNickname}

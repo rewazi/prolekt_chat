@@ -13,7 +13,7 @@ export default function Sidebar({ setIsModalOpen, setIsModalOpenChat }: SidebarP
     <aside className="w-[360px] bg-[#1E1E1E] flex flex-col justify-between pt-[25px] pb-[25px]">
       <div className="flex flex-col gap-[10px]">
         <div className="w-[360px] text-center text-[48px] pb-[25px] text-white font-bold">
-          CHAINCHAT
+          CHAT
         </div>
 
         <hr className="w-[300px] mx-auto border-white pb-[25px]" />

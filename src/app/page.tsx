@@ -12,6 +12,7 @@ export default function App() {
   const [username, setUsername] = useState<string>("");
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [isModalOpenChat, setIsModalOpenChat] = useState<boolean>(false);
+  const [search, setSearch] = useState<string>("");
 
   useEffect(() => {
     const storedUsername = localStorage.getItem("username");
@@ -30,9 +31,9 @@ export default function App() {
 
       <main className="flex flex-1 flex-col bg-[#121212]">
 
-        <Header username={username} setUsername={setUsername} setIsModalOpen={setIsModalOpen}/>
+        <Header username={username} setUsername={setUsername} setIsModalOpen={setIsModalOpen} search={search} setSearch={setSearch}/>
 
-        <Main />
+        <Main search={search} />
       </main>
     </div>
   );

@@ -31,7 +31,6 @@ export default function ChatRoom() {
     const socket = new WebSocket('ws://localhost:8080');
 
     socket.onopen = () => {
-      console.log('Connected to chat');
       socket.send(JSON.stringify({
         type: 'join_chat',
         chatId,
@@ -41,7 +40,6 @@ export default function ChatRoom() {
 
     socket.onmessage = (event) => {
       const data = JSON.parse(event.data);
-      console.log('Received:', data);
 
       if (data.type === 'chat_history') {
         setChatName(data.chatName)
@@ -81,17 +79,14 @@ export default function ChatRoom() {
   return (
     <>
       <Modal_window username={username} setUsername={setUsername} isOpen={isModalOpen} setIsOpen={setIsModalOpen}/>
-      <CreateChatModal isOpen={isModalOpenChat} setIsOpen={setIsModalOpenChat}
-      />
-      <div className="flex h-screen w-screen overflow-hidden">
-        <Sidebar 
-          setIsModalOpen={setIsModalOpen}
-          setIsModalOpenChat={setIsModalOpenChat} 
-        />
 
+      <CreateChatModal isOpen={isModalOpenChat} setIsOpen={setIsModalOpenChat}/>
+
+      <div className="flex h-screen w-screen overflow-hidden">
+        <Sidebar setIsModalOpen={setIsModalOpen} setIsModalOpenChat={setIsModalOpenChat} />
 
         <main className="flex flex-1 flex-col bg-[#121212] min-w-0">
-          <Header username={username} setUsername={setUsername} setIsModalOpen={setIsModalOpen}/>
+          <Header username={username} setUsername={setUsername} setIsModalOpen={setIsModalOpen} chats={[]} search="" setSearch={() => {}} />
 
           <div className="p-[25px] flex flex-col h-full overflow-hidden">
             <h1 className="text-[32px] h-[50px] font-extrabold text-white">{chatName}</h1>
@@ -122,9 +117,7 @@ export default function ChatRoom() {
                 placeholder="Type a message..."
                 className="flex-1 bg-[#2B2B2B] text-white rounded-[5px] px-3 py-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
-              <button type="submit" className="bg-blue-500 text-white px-9 py-4 rounded-[5px] hover:bg-blue-400 transition">
-                Send
-              </button>
+              <button type="submit" className="bg-blue-500 text-white px-9 py-4 rounded-[5px] hover:bg-blue-400 transition">Send</button>
             </form>
           </div>
         </main>
