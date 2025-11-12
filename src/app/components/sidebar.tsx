@@ -8,13 +8,20 @@ export default function Sidebar() {
     <aside className="w-[360px] bg-[#1E1E1E] flex flex-col justify-between pt-[25px] pb-[25px]">
       <div className="flex flex-col gap-[10px]">
         <div className="w-[360px] text-center text-[48px] pb-[25px] text-white font-bold">
+<<<<<<< HEAD
           CHAINCHAT
+=======
+          APP NAME EXAMPLE
+>>>>>>> origin/exp
         </div>
 
         <hr className="w-[300px] mx-auto border-white pb-[25px]" />
 
         <button
+<<<<<<< HEAD
           onClick={() => router.push('/create-chat')}
+=======
+>>>>>>> origin/exp
           className="w-[275px] h-[60px] mx-auto flex items-center text-white hover:bg-[#464646] pl-[14px] rounded-[25px] transition duration-300 ease-in-out"
         >
           <img src="/assets/white-plus-icon-3.jpg" className="w-[42px] h-[42px]" alt="plus icon" />

@@ -8,6 +8,10 @@ interface ModalWindowProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/exp
 export default function ModalWindow({ username, setUsername, isOpen, setIsOpen }: ModalWindowProps) {
   function handleSignIn() {
     if (username.trim() !== "") {
