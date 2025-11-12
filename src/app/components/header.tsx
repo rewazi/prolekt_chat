@@ -18,13 +18,6 @@ export default function Header({ username, setUsername, setIsModalOpen, chats = 
     setIsModalOpen(true);
   };
 
-  const q = (search || '').toLowerCase();
-  const filteredChats = (chats || []).filter((chat: any) => {
-    const name = (chat?.name || '').toLowerCase();
-    const creator = (chat?.creator_username || '').toLowerCase();
-    return name.includes(q) || creator.includes(q);
-  });
-
   return (
     <div className="flex justify-between h-[100px] px-[85px] py-[15px] bg-[#1E1E1E] relative">
       <div className="w-[400px] h-[70px] relative">
