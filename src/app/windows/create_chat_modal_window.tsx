@@ -16,6 +16,7 @@ export default function CreateChatModal({ isOpen, setIsOpen }: CreateChatModalPr
   const [ws, setWs] = useState<WebSocket | null>(null);
   useEffect(() => {
     const socket = new WebSocket('ws://localhost:8080');
+    setWs(socket);
     
     return () => {
         socket.close();
