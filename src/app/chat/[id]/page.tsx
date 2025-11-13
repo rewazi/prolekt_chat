@@ -24,7 +24,7 @@ export default function ChatRoom() {
   useEffect(() => {
     const storedUsername = localStorage.getItem('username');
     if (!storedUsername) {
-      alert('Пожалуйста, введите ваше имя пользователя');
+      alert('Please enter your username');
       router.push('/');
       return;
     }
