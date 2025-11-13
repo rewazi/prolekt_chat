@@ -7,12 +7,14 @@ import Header from './components/header';
 import Main from './main/main';
 import Modal_window from "./windows/change_nickname_modal_window";
 import CreateChatModal from './windows/create_chat_modal_window';
+import RegisterModal from "./windows/registration_modal_window";
 
 export default function App() {
   const [username, setUsername] = useState<string>("");
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [isModalOpenChat, setIsModalOpenChat] = useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
+  const [registerModalOpen, setRegisterModalOpen] = useState<boolean>(false);
 
   useEffect(() => {
     const storedUsername = localStorage.getItem("username");
@@ -27,11 +29,13 @@ export default function App() {
 
       <CreateChatModal isOpen={isModalOpenChat} setIsOpen={setIsModalOpenChat}/>
 
+      <RegisterModal isOpen={registerModalOpen} setIsOpen={setRegisterModalOpen}/>
+
       <Sidebar setIsModalOpen={setIsModalOpen} setIsModalOpenChat={setIsModalOpenChat} />
 
       <main className="flex flex-1 flex-col bg-[#121212]">
 
-        <Header username={username} setUsername={setUsername} setIsModalOpen={setIsModalOpen} search={search} setSearch={setSearch}/>
+        <Header username={username} setUsername={setUsername} setIsModalOpen={setIsModalOpen} setRegisterModalOpen={setRegisterModalOpen} search={search} setSearch={setSearch}/>
 
         <Main search={search} />
       </main>

@@ -5,6 +5,7 @@ import Modal_window from "../../windows/change_nickname_modal_window";
 import Sidebar from "../../components/sidebar";
 import Header from "../../components/header";
 import CreateChatModal from '../../windows/create_chat_modal_window';
+import RegisterModal from '../../windows/registration_modal_window';
 
 export default function ChatRoom() {
   const params = useParams();
@@ -18,6 +19,7 @@ export default function ChatRoom() {
   const [username, setUsername] = useState('');
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [isModalOpenChat, setIsModalOpenChat] = useState<boolean>(false);
+  const [registerModalOpen, setRegisterModalOpen] = useState<boolean>(false);
 
   useEffect(() => {
     const storedUsername = localStorage.getItem('username');
@@ -82,11 +84,13 @@ export default function ChatRoom() {
 
       <CreateChatModal isOpen={isModalOpenChat} setIsOpen={setIsModalOpenChat}/>
 
+      <RegisterModal isOpen={registerModalOpen} setIsOpen={setRegisterModalOpen}/>
+
       <div className="flex h-screen w-screen overflow-hidden">
         <Sidebar setIsModalOpen={setIsModalOpen} setIsModalOpenChat={setIsModalOpenChat} />
 
         <main className="flex flex-1 flex-col bg-[#121212] min-w-0">
-          <Header username={username} setUsername={setUsername} setIsModalOpen={setIsModalOpen} chats={[]} search="" setSearch={() => {}} />
+          <Header username={username} setUsername={setUsername} setIsModalOpen={setIsModalOpen} setRegisterModalOpen={setRegisterModalOpen} chats={[]} search="" setSearch={() => {}} />
 
           <div className="p-[25px] flex flex-col h-full overflow-hidden">
             <h1 className="text-[32px] h-[50px] font-extrabold text-white">{chatName}</h1>
