@@ -33,13 +33,6 @@ export default function Sidebar({ setIsModalOpen, setIsModalOpenChat }: SidebarP
           <img src="/assets/house-64.png" className="w-[42px] h-[42px]" alt="home icon" />
           <span className="font-bold text-[32px] pl-[9px]">All chats</span>
         </button>
-
-        <button
-          className="w-[275px] h-[60px] mx-auto flex items-center text-white hover:bg-[#464646] pl-[14px] rounded-[25px] transition duration-300 ease-in-out"
-        >
-          <img src="/assets/speech-bubble-64.png" className="w-[42px] h-[42px]" alt="chat icon" />
-          <span className="font-bold text-[32px] pl-[9px]">My chats</span>
-        </button>
       </div>
 
       <button
